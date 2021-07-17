@@ -1,10 +1,11 @@
 using System;
 
 class Publications {
+  private static int control = 0;
   private string post;
   private int like;
-  private string[] coment;
-  private int control;
+  private string[] coment = new string [control+1];
+  
 
   public Publications (string post) {
     this.post = post;
@@ -20,14 +21,8 @@ class Publications {
     }
   }
   public void SetComent (string coment) {
-    if (control == coment.Length) {
-      Array.Resize(coment, 2 * coment.Length);
-    }
     this.coment[control] = coment;
     control++;
-  }
-  public void SetHome (Home home) {
-    this.home = home;
   }
 
   // get

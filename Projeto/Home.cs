@@ -1,20 +1,18 @@
 using System;
 
 class Home {
-  private Publications[] posts = new Publications [10];
-  private int control;
+  private static int control = 0;
+  private Publications[] posts = new Publications [control+1];
+
 
   public void NewPost (Publications p) {
-    if (control == posts.Length) {
-      Array.Resize(posts, 2 * posts.Length);
-    }
     posts[control] = p;
     control++;
   }
 
   public Publications[] GetPublications () {
     Publications[] r = new Publications[control];
-    Array.Copy(post, r, control);
+    Array.Copy(posts, r, control);
     return r;
   }
 }
