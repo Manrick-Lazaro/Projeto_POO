@@ -50,7 +50,7 @@ class Profile {
   public string GetCity (string city) {
     return city;
   }
-
+  
   public override string ToString () {
     return $"nome-{name}\nemail-{email}\nfollowers-{followers}\ntelephone-{telephone}";
   }

@@ -1,15 +1,14 @@
 using System;
 
 class Home {
-  private Publications[] post = new Publications[10];
+  private Publications[] posts = new Publications [10];
   private int control;
 
-
-  public void SetNewPost (Publications post) {
-    if (control == post.Length) {
-      Array.Resize(post, 2 * post.Length);
+  public void NewPost (Publications p) {
+    if (control == posts.Length) {
+      Array.Resize(posts, 2 * posts.Length);
     }
-    this.post[control] = post;
+    posts[control] = p;
     control++;
   }
 
@@ -18,5 +17,4 @@ class Home {
     Array.Copy(post, r, control);
     return r;
   }
-
 }
