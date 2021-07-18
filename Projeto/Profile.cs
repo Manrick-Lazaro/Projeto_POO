@@ -24,8 +24,8 @@ class Profile {
   public void SetTelephone (string telephone) {
     this.telephone = telephone;
   }
-  public void SetDate (DateTime date) {
-    this.date = date;
+  public void SetDate (string date) {
+    this.date = DateTime.Parse(date);
   }
   public void SetCity (string city) {
     this.city = city;
@@ -52,6 +52,6 @@ class Profile {
   }
   
   public override string ToString () {
-    return $"nome-{name}\nemail-{email}\nfollowers-{followers}\ntelephone-{telephone}";
+    return $"nome - {name}\nemail - {email}\nseguidores - {followers}\ntelefone - {telephone}\ncidade - {city}\ndata de aniversario - {date.ToString("d")}";
   }
 }
