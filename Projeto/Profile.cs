@@ -1,18 +1,17 @@
 using System;
 
 class Profile {
+  private User u;
   private string name;
-  private int password;
   private string email;
   private string telephone;
   private string city;
   private DateTime date;
   private int followers;
-  private int follows;
+  private static int follows;
 
-  public Profile (string name, int id) {
-    this.name = name;
-    this.password = password;
+  public Profile (User u) {
+    this.u = u;
   }
 
   // Set Profile Data
@@ -31,9 +30,6 @@ class Profile {
   public void SetCity (string city) {
     this.city = city;
   }
-  public void ResetPassword (int password) {
-    this.password = password;
-  }
 
   // Get Profile Data
   public string GetName () {
@@ -51,8 +47,14 @@ class Profile {
   public string GetCity () {
     return city;
   }
+  public int GetFollows () {
+    return follows;
+  }
   
-  
+  public static void AddFriends (bool x) {
+    if (x == true) {follows++;}
+  }
+
   public override string ToString () {
     return $"nome - {name}\nemail - {email}\nseguidores - {followers}\ntelefone - {telephone}\ncidade - {city}\ndata de aniversario - {date.ToString("d")}";
   }
