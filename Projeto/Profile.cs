@@ -36,19 +36,19 @@ class Profile {
   }
 
   // Get Profile Data
-  public string GetName (string name) {
+  public string GetName () {
     return name;
   }
-  public string GetEmail (string email) {
+  public string GetEmail () {
     return email;
   }
-  public string GetTelephone (string telephone) {
+  public string GetTelephone () {
     return telephone;
   }
-  public DateTime GetDate (DateTime date) {
+  public DateTime GetDate () {
     return date;
   }
-  public string GetCity (string city) {
+  public string GetCity () {
     return city;
   }
   
