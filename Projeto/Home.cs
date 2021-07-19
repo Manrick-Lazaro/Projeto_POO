@@ -1,13 +1,15 @@
 using System;
 
 class Home {
+  private Publications[] posts = new Publications [10];
   private static int control = 0;
-  private Publications[] posts = new Publications [control+1];
-
 
   public void NewPost (Publications p) {
-    posts[control] = p;
-    control++;
+    if (control == posts.Length - 1) {
+      Array.Resize(ref posts, 2 * posts.Length);
+    }
+    posts [control] = p;
+    control += 1;
   }
 
   public Publications[] GetPublications () {

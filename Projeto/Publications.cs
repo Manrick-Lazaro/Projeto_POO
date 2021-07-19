@@ -12,7 +12,7 @@ class Publications {
   }
 
   // set
-  public void SetPost (string post) {
+  public void EditPost (string post) {
     this.post = post;
   }
   public void SetLike (bool like) {
@@ -36,5 +36,9 @@ class Publications {
     string[] r = new string[control];
     Array.Copy(coment, r, control);
     return r;
+  }
+
+  public override string ToString () {
+    return $"{post}";
   }
 }

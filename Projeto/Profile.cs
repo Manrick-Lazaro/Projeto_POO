@@ -8,6 +8,7 @@ class Profile {
   private string city;
   private DateTime date;
   private int followers;
+  private int follows;
 
   public Profile (string name, int id) {
     this.name = name;
@@ -50,6 +51,7 @@ class Profile {
   public string GetCity (string city) {
     return city;
   }
+  
   
   public override string ToString () {
     return $"nome - {name}\nemail - {email}\nseguidores - {followers}\ntelefone - {telephone}\ncidade - {city}\ndata de aniversario - {date.ToString("d")}";
