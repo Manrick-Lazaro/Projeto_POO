@@ -14,11 +14,11 @@ class Home {
     controlPublications += 1;
   }
 
-  public void AddFriends (Friends nome) {
+  public void AddFriends (Friends friend) {
     if (controlFriends == friends.Length - 1) {
       Array.Resize(ref friends, 2 * friends.Length);
     }
-    friends [controlFriends] = nome;
+    friends [controlFriends] = friend;
     controlFriends += 1;
     bool x = true;
     Profile.AddFriends(x);

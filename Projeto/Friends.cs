@@ -1,13 +1,13 @@
 using System;
 
 class Friends {
-  private string name;
+  private Profile friend;
 
-  public Friends (string name) {
-    this.name = name;
+  public Friends (Profile friend) {
+    this.friend = friend;
   }
 
   public override string ToString () {
-    return $"name - {name}";
+    return $"name - {friend}";
   }
 }

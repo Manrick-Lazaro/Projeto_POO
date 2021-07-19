@@ -48,7 +48,7 @@ class MainClass {
     foreach (Publications p in a) {Console.WriteLine(p);}
     Console.WriteLine("-------------------------------------------");
     // adicionar amigos ao perfil 2
-    Friends amigo1 = new Friends ("carlinho");
+    Friends amigo1 = new Friends (profile1);
 
     homeProfile2.AddFriends(amigo1);
     Console.WriteLine(profile2.GetFollows());
