@@ -13,7 +13,7 @@ class Profile {
   public Profile (User u) {
     this.u = u;
   }
-
+ 
   // Set Profile Data
   public void SetName (string name) {
     this.name = name;
