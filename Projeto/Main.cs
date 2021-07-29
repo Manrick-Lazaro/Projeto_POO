@@ -3,7 +3,8 @@ using System;
 class MainClass {
   private static NUsuario u1 = new NUsuario();
   private static NPerfil p1 = new NPerfil();
-  
+  private static NHome h1 = new NHome();
+
   public static void Main (string[] argc) {
     int opcao = 0;
     
@@ -15,6 +16,7 @@ class MainClass {
           case 2: DadosConta(); break;
           case 3: PerfilEditar(); break;
           case 4: PerfilAcessar(); break;
+          case 5: Home(); break;
         }
       }
       catch (Exception erro) {
@@ -34,6 +36,7 @@ class MainClass {
     Console.WriteLine("2 - Acessar dados da conta");
     Console.WriteLine("3 - Editar perfil");
     Console.WriteLine("4 - Acessar dados do perfil");
+    Console.WriteLine("5 - Acessar Home");
     Console.WriteLine("0 - Finalizar programa");
     Console.Write("Escolha uma opcao: ");
     int opcaoMenu = int.Parse(Console.ReadLine());
@@ -84,14 +87,46 @@ class MainClass {
     string ID = Console.ReadLine();
 
     User usuario = new User(nome, ID);
+    Home Home1 = new Home ();
     Profile perfil1 = new Profile (usuario);
 
     u1.SetUsuario(usuario);
     p1.SetPerfil(perfil1);
+    h1.SetH(Home1);
   }
   public static void DadosConta () {
     Console.WriteLine(u1);
   }
 
+  public static void Home () {
+    Console.WriteLine("________________________________");
+    Console.WriteLine();
+    Console.WriteLine("Home");
+    Console.WriteLine();
+    Console.WriteLine("1 - Criar uma postagem nova");
+    Console.WriteLine("2 - Feed");
+    Console.WriteLine("3 - Adicionar amigos");
   
+    Console.Write("Escolha: ");
+    int EscolhaHome = int.Parse(Console.ReadLine());
+    
+    try {
+        switch (EscolhaHome) {
+          case 1: h1.NovoPost(); break;
+          case 2: FeedListar(); break;
+        }
+      }
+      catch (Exception erro) {
+        Console.WriteLine(erro.Message);
+        EscolhaHome = 100;
+      }
+    
+    Console.WriteLine();
+  } 
+  public static void FeedListar () {
+    Console.WriteLine();
+    Publications[] pub  = h1.ListarPost() ;
+    foreach (Publications p in pub)
+      Console.WriteLine(p);
+  }
 }
