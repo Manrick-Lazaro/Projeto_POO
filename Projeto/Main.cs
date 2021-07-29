@@ -105,15 +105,18 @@ class MainClass {
     Console.WriteLine();
     Console.WriteLine("1 - Criar uma postagem nova");
     Console.WriteLine("2 - Feed");
-    Console.WriteLine("3 - Adicionar amigos");
+    Console.WriteLine("3 - Editar publicação");
+    Console.WriteLine("4 - Exluir publicação");
   
     Console.Write("Escolha: ");
     int EscolhaHome = int.Parse(Console.ReadLine());
     
     try {
         switch (EscolhaHome) {
-          case 1: h1.NovoPost(); break;
+          case 1: NovoPost(); break;
           case 2: FeedListar(); break;
+          case 3: EditarP(); break;
+          case 4: ExcluirP(); break;
         }
       }
       catch (Exception erro) {
@@ -123,10 +126,36 @@ class MainClass {
     
     Console.WriteLine();
   } 
+
   public static void FeedListar () {
     Console.WriteLine();
     Publications[] pub  = h1.ListarPost() ;
     foreach (Publications p in pub)
       Console.WriteLine(p);
+  }
+
+  public static void NovoPost () {
+    Console.WriteLine("Criando uma nova postagem");
+    Console.Write("Digite: ");
+    string x = Console.ReadLine();
+    h1.NovoPost(x);
+  }
+
+  public static void EditarP () {
+    Console.WriteLine("Atualizando Postagem");
+    Console.Write("Edit: ");
+    string x = Console.ReadLine();
+    Console.Write("ID: ");
+    int y = int.Parse(Console.ReadLine());
+    Publications z = new Publications (x,y);
+    h1.AtualizarPost(z);
+  }
+
+  public static void ExcluirP () {
+    Console.WriteLine("Excluindo Postagem");
+    Console.Write("informe o ID: ");
+    int y = int.Parse(Console.ReadLine());
+    Publications x = h1.Listar(y);
+    h1.ExcluirPost(x);
   }
 }
