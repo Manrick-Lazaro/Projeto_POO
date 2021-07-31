@@ -51,9 +51,6 @@ class Profile {
     return follows;
   }
   
-  public static void AddFriends (bool x) {
-    if (x == true) {follows++;}
-  }
 
   public override string ToString () {
     return $"nome - {name}\nemail - {email}\nseguidores - {followers}\ntelefone - {telephone}\ncidade - {city}\ndata de aniversario - {date.ToString("d")}";

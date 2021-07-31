@@ -1,7 +1,7 @@
 using System;
 
 class NPerfil {
-  private Profile pr;
+  private Perfil pr;
 
   public void SetPerfil (Profile p) {
     pr = p;
