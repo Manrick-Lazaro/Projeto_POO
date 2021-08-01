@@ -1,17 +1,17 @@
 using System;
 
-class Publications {
+class Publicacao {
   private static int controleComent = 0;
   private string post;
   private int ID;
   private string[] comentarios = new string[10];
   private int curtidas = 0; 
 
-  public Publications (string post, int id) {
+  public Publicacao (string post, int id) {
     this.post = post;
     this.ID = id;
   }
-  public Publications (string post) {
+  public Publicacao (string post) {
     this.post = post;
   }
 

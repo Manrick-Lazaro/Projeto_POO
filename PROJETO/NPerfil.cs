@@ -3,7 +3,7 @@ using System;
 class NPerfil {
   private Perfil pr;
 
-  public void SetPerfil (Profile p) {
+  public void SetPerfil (Perfil p) {
     pr = p;
   }
 
@@ -11,16 +11,16 @@ class NPerfil {
     pr.SetName(Console.ReadLine());
   }
   public void EMail () {
-    pr.SetName(Console.ReadLine());
+    pr.SetEmail(Console.ReadLine());
   }
   public void Tel () {
-    pr.SetName(Console.ReadLine());
+    pr.SetTelephone(Console.ReadLine());
   }
   public void Data () {
-    pr.SetName(Console.ReadLine());
+    pr.SetDate(Console.ReadLine());
   }
   public void Cidade () {
-    pr.SetName(Console.ReadLine());
+    pr.SetCity(Console.ReadLine());
   }
 
   public override string ToString () {

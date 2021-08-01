@@ -1,7 +1,7 @@
 using System;
 
-class Profile {
-  private User u;
+class Perfil {
+  private Usuario u;
   private string name;
   private string email;
   private string telephone;
@@ -10,7 +10,7 @@ class Profile {
   private int followers;
   private static int follows;
 
-  public Profile (User u) {
+  public Perfil (Usuario u) {
     this.u = u;
   }
  

@@ -1,19 +1,19 @@
 using System;
 
 class NUsuario {
-  private User us;
+  private Usuario us;
   private Publicacao[] publicacoes = new Publicacao[10];
   private int control = 0;
   
-  public void SetUsuario (User u) {
+  public void SetUsuario (Usuario u) {
     us = u;
   }
 
-  public void NovoPost (string a, string id) {
-    if (control == feed.Length) {
+  public void NovoPost (string a, int id) {
+    if (control == publicacoes.Length) {
       Array.Resize(ref publicacoes, 2 * publicacoes.Length);
     }
-    Publicacao postagem = new Publicacaso(a, id);
+    Publicacao postagem = new Publicacao(a, id);
     publicacoes[control] = postagem;
     control++;
   }
@@ -26,15 +26,16 @@ class NUsuario {
 
   public Publicacao Listar (int ID) {
     for (int i = 0; i < control; i++)
-      if (publicacoes[i].GetId() == id) return 
+      if (publicacoes[i].GetId() == ID) return 
       publicacoes[i];
     return null;
   }
 
   public void AtualizarPost (Publicacao x) {
     Publicacao atualizacao = Listar(x.GetId());
-    if (atualizacao == null) return;
-    atualizacao.EditPost(p.GetPost());
+    if (atualizacao == null) 
+      return;
+    atualizacao.EditPost(atualizacao.GetPost());
   }
 
   private int Indice (Publicacao pub) {
@@ -45,7 +46,7 @@ class NUsuario {
     return -1;
   }
 
-  public void ExcluirPost (Publications p) {
+  public void ExcluirPost (Publicacao p) {
     int i = Indice(p);
     if (i == -1) return;
     for (int j = i; j<control; j++) {
@@ -54,7 +55,7 @@ class NUsuario {
     control--;
   }
 
-  public User GetUsuario () {
+  public Usuario GetUsuario () {
     return us;
   }
 

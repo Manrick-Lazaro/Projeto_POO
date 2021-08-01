@@ -1,20 +1,20 @@
 using System;
 
-class User {
+class Usuario {
   private string user;
   private string ID;
-  private Publicacao[] posts = new Publicacao [10];
-  private User[] Amigos = new User [10];
+  private Publicacao[] posts = new Publicacao[10];
+  private Usuario[] amigos = new Usuario [10];
   private static int controlePublicacao = 0;
   private static int controleAmigos = 0;
 
-  public User (string user, string ID) {
+  public Usuario (string user, string ID) {
     this.user = user;
     this.ID = ID;
   }
 
   // SET
-  public void NewPost (Publications p) {
+  public void NewPost (Publicacao p) {
     if (controlePublicacao == posts.Length - 1) {
       Array.Resize(ref posts, 2 * posts.Length);
     }
@@ -22,7 +22,7 @@ class User {
     controlePublicacao += 1;
   }
 
-  public void AddFriends (User amigo) {
+  public void AddFriends (Usuario amigo) {
     if (controleAmigos == amigos.Length - 1) {
       Array.Resize(ref amigos, 2 * amigos.Length);
     }
@@ -31,15 +31,15 @@ class User {
   }
   
   // GET
-  public Publications[] GetPublications () {
-    Publications[] r = new Publications[controlPublications];
-    Array.Copy(posts, r, controlPublications);
+  public Publicacao[] GetPublications () {
+    Publicacao[] r = new Publicacao[controlePublicacao];
+    Array.Copy(posts, r, controlePublicacao);
     return r;
   }
 
-  public Friends[] GetFriends () {
-    Friends[] r = new Friends[controlFriends];
-    Array.Copy(friends, r, controlFriends);
+  public Usuario[] GetFriends () {
+    Usuario[] r = new Usuario[controleAmigos];
+    Array.Copy(amigos, r, controleAmigos);
     return r;
   } 
 
