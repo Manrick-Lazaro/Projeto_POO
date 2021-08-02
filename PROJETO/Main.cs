@@ -19,6 +19,8 @@ class MainClass {
           case 6: NovoPost(); break;
           case 7: EditarP(); break;
           case 8: ExcluirP(); break;
+          case 9: ComentarP(); break;
+          case 10: CurtirP(); break;
         }
       }
       catch (Exception erro) {
@@ -31,8 +33,7 @@ class MainClass {
   }
 
   public static int Menu () {
-    Console.WriteLine("");
-    Console.WriteLine("________________________________");
+    Console.WriteLine("-------------MENU DE ESCOLHAS-------------");
     Console.WriteLine();
     Console.WriteLine("1 - Criar uma conta");
     Console.WriteLine("2 - Acessar dados da conta");
@@ -42,6 +43,8 @@ class MainClass {
     Console.WriteLine("6 - Criar uma postagem");
     Console.WriteLine("7 - Editar uma postagem");
     Console.WriteLine("8 - Excluir uma postagem");
+    Console.WriteLine("9 - Comentar uma postagem");
+    Console.WriteLine("10 - Curtir uma postagem");
     Console.WriteLine("0 - Finalizar programa");
     Console.Write("Escolha uma opcao: ");
     int opcaoMenu = int.Parse(Console.ReadLine());
@@ -49,10 +52,8 @@ class MainClass {
     return opcaoMenu;
   }
 
-  public static void PerfilEditar () {
-    Console.WriteLine("________________________________");
-    Console.WriteLine();
-    Console.WriteLine("Edição do perfil");
+  public static void PerfilEditar () {    
+    Console.WriteLine("-------------EDITANDO PERFIL-------------");
     Console.WriteLine();
     Console.WriteLine("1 - Nome");
     Console.WriteLine("2 - E-mail");
@@ -79,13 +80,12 @@ class MainClass {
     Console.WriteLine();
   }
   public static void PerfilAcessar () {
-  
+    Console.WriteLine("-------------ACESSANDO PERFIL-------------");
     Console.WriteLine(p1);
-    
   }
 
   public static void CriarConta () {
-    Console.WriteLine("Crie sua conta");
+    Console.WriteLine("-------------CRIANDO UMA NOVA CONTA-------------");
     Console.Write("Nome de usuario:");
     string nome = Console.ReadLine();
     Console.Write("Seu ID: ");
@@ -102,6 +102,7 @@ class MainClass {
   }
 
   public static void FeedListar () {
+    Console.WriteLine("-------------MOSTRANDO POSTAGENS-------------");
     Console.WriteLine();
     Publicacao[] pub  = u1.ListarPost() ;
     foreach (Publicacao p in pub)
@@ -109,19 +110,15 @@ class MainClass {
   }
 
   public static void NovoPost () {
-    Console.WriteLine("Criando uma nova postagem");
+    Console.WriteLine("-------------CRIANDO UMA NOVA POSTAGEM-------------");
     Console.Write("Digite: ");
     string postagem = Console.ReadLine();
-
-    Console.WriteLine("Coloque uma id do post");
-    Console.Write("Digite: ");
-    int id = int.Parse(Console.ReadLine());
-  
-    u1.NovoPost(postagem, id);
+    
+    u1.NovoPost(postagem);
   }
 
   public static void EditarP () {
-    Console.WriteLine("Atualizando Postagem");
+    Console.WriteLine("-------------ATUALIZANDO POSTAGEM-------------");
     Console.Write("Edit: ");
     string x = Console.ReadLine();
     Console.Write("ID: ");
@@ -131,10 +128,34 @@ class MainClass {
   }
 
   public static void ExcluirP () {
-    Console.WriteLine("Excluindo Postagem");
+    Console.WriteLine("-------------EXCLUINDO POSTAGEM-------------");
     Console.Write("informe o ID: ");
     int y = int.Parse(Console.ReadLine());
     Publicacao x = u1.Listar(y);
     u1.ExcluirPost(x);
+  }
+
+  public static void ComentarP () {
+    Console.WriteLine("-------------COMENTANDO-------------");
+    Console.WriteLine();
+    Console.Write("Digite o id da postagem: ");
+    int id = int.Parse(Console.ReadLine());
+    Console.WriteLine();
+    Console.Write("Comentente: ");
+    string comentario = Console.ReadLine();
+
+    u1.Comentar(id, comentario);
+  }
+
+  public static void CurtirP () {
+    Console.WriteLine("-------------CURTINDO UMA POSTAGEM-------------");
+    Console.Write("Digite uma ID:");
+    int x = int.Parse(Console.ReadLine());
+    Console.WriteLine("Voçe quer curtir essa publicação?");
+    Console.WriteLine("1 - SIM");
+    Console.WriteLine("2 - NÃO");
+    int y = int.Parse(Console.ReadLine());
+
+    u1.curtir(x, y);
   }
 }

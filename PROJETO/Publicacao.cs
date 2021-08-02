@@ -47,8 +47,21 @@ class Publicacao {
   public int GetId() {
     return ID;
   }
+  public string ListarComentarios () {
+    string[] c = GetComentarios();
+    foreach (string x in c){
+      Console.WriteLine(x);
+    }
+       
+    return"";
+  }
 
   public override string ToString () {
-    return $"{post}";
+    Console.WriteLine($" -----Postagem-----\n->{post}");
+    Console.WriteLine($"    -----ID-----\n->{ID}\n");
+    Console.WriteLine($" -----Curtidas-----\n->{curtidas}\n");
+    Console.WriteLine($"-----Comentarios-----");
+    ListarComentarios();
+    return "";    
   }
 }

@@ -9,25 +9,38 @@ class NUsuario {
     us = u;
   }
 
-  public void NovoPost (string a, int id) {
+  public void NovoPost (string a) {
     if (control == publicacoes.Length) {
       Array.Resize(ref publicacoes, 2 * publicacoes.Length);
     }
-    Publicacao postagem = new Publicacao(a, id);
+    Random rnd = new Random ();
+    
+    novoNumero:
+    
+    int IDAletorio = rnd.Next(0, 10000);
+    
+    for (int i = 0; i < control; i++) {
+      if (IDAletorio == publicacoes[i].GetId()) {
+        goto novoNumero;
+      }
+    }
+
+    Publicacao postagem = new Publicacao(a, IDAletorio);
+
     publicacoes[control] = postagem;
     control++;
   }
 
   public Publicacao[] ListarPost () { 
-    Publicacao[] postagem = new Publicacao [control];
-    Array.Copy(publicacoes, postagem, control);
-    return postagem;
+    Publicacao[] postagens = new Publicacao [control];
+    Array.Copy(publicacoes, postagens, control);
+    return postagens;
   }
 
   public Publicacao Listar (int ID) {
     for (int i = 0; i < control; i++)
-      if (publicacoes[i].GetId() == ID) return 
-      publicacoes[i];
+      if (publicacoes[i].GetId() == ID) 
+        return publicacoes[i];
     return null;
   }
 
@@ -35,7 +48,7 @@ class NUsuario {
     Publicacao atualizacao = Listar(x.GetId());
     if (atualizacao == null) 
       return;
-    atualizacao.EditPost(atualizacao.GetPost());
+    atualizacao.EditPost(x.GetPost());
   }
 
   private int Indice (Publicacao pub) {
@@ -49,12 +62,23 @@ class NUsuario {
   public void ExcluirPost (Publicacao p) {
     int i = Indice(p);
     if (i == -1) return;
-    for (int j = i; j<control; j++) {
+    for (int j = i; j<control-1; j++) {
       publicacoes[j] = publicacoes[j + 1];
     }
     control--;
   }
 
+  public void Comentar (int x, string y) {
+    Publicacao coment = Listar(x);
+    coment.Comentar(y);
+  }
+
+  public void Curtir (int id, int x) {
+    Publicacao curtir = Listar(id);
+    if (x == 1) {
+      curtir.Curtir();
+    }
+  }
   public Usuario GetUsuario () {
     return us;
   }
