@@ -27,21 +27,6 @@ class Usuario {
     return r;
   }
 
-  private int publicacaoIndice (Publicacao p) {
-    for (int i = 0; i < controlePublicacao; i++){
-      if (posts[i] == p) 
-        return i;
-  }
-
-  public void ExcluirPost (Publicacao p) {
-    int i = publicacaoIndice(p);
-    if (i == -1) return;
-    for (int j = i; j<controlePublicacao-1; j++) {
-      posts[j] = posts[j + 1];
-    }
-    controlePublicacao--;
-  }
-
   public void AddFriends (Usuario amigo) {
     if (controleAmigos == amigos.Length - 1) {
       Array.Resize(ref amigos, 2 * amigos.Length);
@@ -56,23 +41,27 @@ class Usuario {
     return r;
   } 
 
-  private int amigoIndice (User u) {
-    for (int i = 0; i < controleAmigos; i++){
-      if (amigos[i] == u) 
-        return i;
-  }
-
-  public void ExcluirAmigo (User u) {
-    int i = amigoIndice(u);
-    if (i == -1) return;
-    for (int j = i; j<controleAmigos-1; j++) {
-      amigos[j] = amigos[j + 1];
-    }
-    controleAmigos--;
-  }
-
   public string GetID () {
     return ID;
+  }
+
+  public Publicacao Listar (int ID) {
+    for (int i = 0; i < controlePublicacao; i++)
+      if (posts[i].GetId() == ID) 
+        return posts[i];
+    return null;
+  }
+
+  public void Curtir (int id, int x) {
+    Publicacao curtir = Listar(id);
+    if (x == 1) {
+      curtir.Curtir(true);
+    }
+  }
+
+  public void Comentar (int x, string y) {
+    Publicacao coment = Listar(x);
+    coment.Comentar(y);
   }
 
   public override string ToString () {

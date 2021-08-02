@@ -62,6 +62,6 @@ class Publicacao {
     Console.WriteLine($" -----Curtidas-----\n->{curtidas}\n");
     Console.WriteLine($"-----Comentarios-----");
     ListarComentarios();
-    return "";    
+    return "\n\n\n\n";    
   }
 }

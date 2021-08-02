@@ -86,7 +86,7 @@ class MainClass {
 
   public static void CriarConta () {
     Console.WriteLine("-------------CRIANDO UMA NOVA CONTA-------------");
-    Console.Write("Nome de usuario:");
+    Console.Write("Nome de usuario: ");
     string nome = Console.ReadLine();
     Console.Write("Seu ID: ");
     string ID = Console.ReadLine();
@@ -141,7 +141,7 @@ class MainClass {
     Console.Write("Digite o id da postagem: ");
     int id = int.Parse(Console.ReadLine());
     Console.WriteLine();
-    Console.Write("Comentente: ");
+    Console.Write("Comente: ");
     string comentario = Console.ReadLine();
 
     u1.Comentar(id, comentario);
@@ -156,6 +156,6 @@ class MainClass {
     Console.WriteLine("2 - NÃO");
     int y = int.Parse(Console.ReadLine());
 
-    u1.curtir(x, y);
+    u1.Curtir(x, y);
   }
 }

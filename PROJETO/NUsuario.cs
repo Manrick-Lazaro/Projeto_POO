@@ -76,7 +76,7 @@ class NUsuario {
   public void Curtir (int id, int x) {
     Publicacao curtir = Listar(id);
     if (x == 1) {
-      curtir.Curtir();
+      curtir.Curtir(true);
     }
   }
   public Usuario GetUsuario () {
