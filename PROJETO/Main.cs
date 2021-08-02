@@ -21,6 +21,8 @@ class MainClass {
           case 8: ExcluirP(); break;
           case 9: ComentarP(); break;
           case 10: CurtirP(); break;
+          case 11: AddAmigos(); break;
+          case 12: ExcluirA(); break;
         }
       }
       catch (Exception erro) {
@@ -45,6 +47,8 @@ class MainClass {
     Console.WriteLine("8 - Excluir uma postagem");
     Console.WriteLine("9 - Comentar uma postagem");
     Console.WriteLine("10 - Curtir uma postagem");
+    Console.WriteLine("11 - Adicionar amigo");
+    Console.WriteLine("12 - Excluir amigo");
     Console.WriteLine("0 - Finalizar programa");
     Console.Write("Escolha uma opcao: ");
     int opcaoMenu = int.Parse(Console.ReadLine());
@@ -89,7 +93,7 @@ class MainClass {
     Console.Write("Nome de usuario: ");
     string nome = Console.ReadLine();
     Console.Write("Seu ID: ");
-    string ID = Console.ReadLine();
+    int ID = int.Parse(Console.ReadLine());
 
     Usuario usr = new Usuario(nome, ID);
     Perfil perfil1 = new Perfil (usr);
@@ -157,5 +161,23 @@ class MainClass {
     int y = int.Parse(Console.ReadLine());
 
     u1.Curtir(x, y);
+  }
+
+  public static void AddAmigos () {
+    Console.WriteLine("-------------ADICIONANDO UM AMIGO-------------");
+    Console.Write("Digite um nome: ");
+    string nome = Console.ReadLine();
+    Console.Write("Digite uma ID: ");
+    int id = int.Parse(Console.ReadLine());
+
+    u1.AddAmigo(nome, id);
+  }
+
+  public static void ExcluirA () {
+    Console.WriteLine("-------------EXCLUINDO AMIGO-------------");
+    Console.Write("informe o ID: ");
+    int ID_User_Del = int.Parse(Console.ReadLine());
+    Usuario user_del = u1.ListarAmigo(ID_User_Del);
+    u1.ExcluirAmigo(user_del);
   }
 }

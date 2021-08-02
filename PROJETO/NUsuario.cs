@@ -3,7 +3,9 @@ using System;
 class NUsuario {
   private Usuario us;
   private Publicacao[] publicacoes = new Publicacao[10];
+  private Usuario[] amigos = new Usuario[10];
   private int control = 0;
+  private int controleAmigo = 0;
   
   public void SetUsuario (Usuario u) {
     us = u;
@@ -81,6 +83,48 @@ class NUsuario {
   }
   public Usuario GetUsuario () {
     return us;
+  }
+
+  public void AddAmigo (string nome, int id) {
+    if (controleAmigo == amigos.Length) {
+      Array.Resize(ref amigos, 2 * amigos.Length);
+    }
+    
+    Usuario a = new Usuario(nome, id);
+
+    amigos[controleAmigo] = a;
+
+    controleAmigo++;
+  }
+
+  public Usuario[] ListarAmigos () { 
+    Usuario[] amigo = new Usuario [controleAmigo];
+    Array.Copy(amigos, amigo, controleAmigo);
+    return amigo;
+  }
+
+  public Usuario ListarAmigo (int ID) {
+    for (int i = 0; i < controleAmigo; i++)
+      if (amigos[i].GetID() == ID) 
+        return amigos[i];
+    return null;
+  }
+
+  private int IndiceAmigo (Usuario u) {
+    for (int i = 0; i < controleAmigo; i++){
+      if (amigos[i] == u) 
+        return i;
+    }
+    return -1;
+  }
+
+  public void ExcluirAmigo (Usuario u) {
+    int i = IndiceAmigo(u);
+    if (i == -1) return;
+    for (int j = i; j<controleAmigo-1; j++) {
+      amigos[j] = amigos[j + 1];
+    }
+    controleAmigo--;
   }
 
   public override string ToString() {

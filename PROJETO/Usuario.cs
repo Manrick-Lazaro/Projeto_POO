@@ -2,13 +2,13 @@ using System;
 
 class Usuario {
   private string user;
-  private string ID;
+  private int ID;
   private Publicacao[] posts = new Publicacao[10];
   private Usuario[] amigos = new Usuario [10];
   private static int controlePublicacao = 0;
   private static int controleAmigos = 0;
 
-  public Usuario (string user, string ID) {
+  public Usuario (string user, int ID) {
     this.user = user;
     this.ID = ID;
   }
@@ -27,11 +27,11 @@ class Usuario {
     return r;
   }
 
-  public void AddFriends (Usuario amigo) {
+  public void AddFriends (Usuario u) {
     if (controleAmigos == amigos.Length - 1) {
       Array.Resize(ref amigos, 2 * amigos.Length);
     }
-    amigos[controleAmigos] = amigo;
+    amigos[controleAmigos] = u;
     controleAmigos += 1;
   }
 
@@ -40,10 +40,6 @@ class Usuario {
     Array.Copy(amigos, r, controleAmigos);
     return r;
   } 
-
-  public string GetID () {
-    return ID;
-  }
 
   public Publicacao Listar (int ID) {
     for (int i = 0; i < controlePublicacao; i++)
@@ -62,6 +58,10 @@ class Usuario {
   public void Comentar (int x, string y) {
     Publicacao coment = Listar(x);
     coment.Comentar(y);
+  }
+
+  public int GetID () {
+    return ID;
   }
 
   public override string ToString () {
