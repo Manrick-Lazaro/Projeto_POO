@@ -7,8 +7,7 @@ class Perfil {
   private string telephone;
   private string city;
   private DateTime date;
-  private int followers;
-  private static int follows;
+  private int amigos;
 
   public Perfil (Usuario u) {
     this.u = u;
@@ -30,6 +29,11 @@ class Perfil {
   public void SetCity (string city) {
     this.city = city;
   }
+  public void SetAmigo (bool x) {
+    if (x == true) {
+      amigos++;
+    }
+  }
 
   // Get Profile Data
   public string GetName () {
@@ -47,12 +51,12 @@ class Perfil {
   public string GetCity () {
     return city;
   }
-  public int GetFollows () {
+  public int GetAmigos () {
     return follows;
   }
   
 
   public override string ToString () {
-    return $"nome - {name}\nemail - {email}\nseguidores - {followers}\ntelefone - {telephone}\ncidade - {city}\ndata de aniversario - {date.ToString("d")}";
+    return $"nome - {name}\nemail - {email}\namigos - {amigos}\ntelefone - {telephone}\ncidade - {city}\ndata de aniversario - {date.ToString("d")}";
   }
 }
