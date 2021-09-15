@@ -95,6 +95,7 @@ class NUsuario {
     amigos[controleAmigo] = a;
 
     controleAmigo++;
+    
   }
 
   public Usuario[] ListarAmigos () { 

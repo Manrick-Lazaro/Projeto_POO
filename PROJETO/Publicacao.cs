@@ -7,6 +7,9 @@ class Publicacao {
   private string[] comentarios = new string[10];
   private int curtidas = 0; 
 
+  public string UsusarioEmail { get; set; }
+  
+  // construtores
   public Publicacao (string post, int id) {
     this.post = post;
     this.ID = id;

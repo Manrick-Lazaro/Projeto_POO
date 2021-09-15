@@ -1,8 +1,10 @@
 using System;
+using System.Collections.Generic;
 
 class MainClass {
   private static NUsuario u1 = new NUsuario();
   private static NPerfil p1 = new NPerfil();
+  private static Banco b1 = new Banco();
 
   public static void Main (string[] argc) {
     int opcao = 0;
@@ -56,6 +58,33 @@ class MainClass {
     return opcaoMenu;
   }
 
+  public static void CriarConta () {
+    Console.WriteLine("-------------CRIANDO UMA NOVA CONTA-------------");
+
+    // pegando as informações da nova conta do usuario
+    Console.Write("Nome de usuario: ");
+    string nome = Console.ReadLine();
+    Console.Write("Senha: ");
+    string senha = (Console.ReadLine());
+
+    // criando um usuario
+    Usuario usr = new Usuario(nome, senha);
+    Perfil perfil1 = new Perfil();
+
+    // criando um ID para esse usuario e adicionando-o no banco
+    int max = 0;
+    List<Usuario> lista = new List<Usuario>();
+    lista = b1.ListarUsuarios();
+    for (int i = 0; i < lista.Count; i++) {
+      if (lista[i].ID > max) { max = lista[i].ID; }
+    }
+    usr.ID = max + 1;  
+    
+    b1.NovoUsuario(usr);
+    u1.SetUsuario(usr); // usuario ja inicia com um nome, uma senha e um ID.
+    p1.SetPerfil(perfil1);
+  }
+
   public static void PerfilEditar () {    
     Console.WriteLine("-------------EDITANDO PERFIL-------------");
     Console.WriteLine();
@@ -70,8 +99,8 @@ class MainClass {
     try {
         switch (editarPerfil) {
           case 1: p1.Nome(); break;
-          case 2: p1.EMail(); break;
-          case 3: p1.Tel(); break;
+          case 2: p1.Email(); break;
+          case 3: p1.Telefone(); break;
           case 4: p1.Data(); break;
           case 5: p1.Cidade(); break;
         }
@@ -83,24 +112,12 @@ class MainClass {
     
     Console.WriteLine();
   }
+
   public static void PerfilAcessar () {
     Console.WriteLine("-------------ACESSANDO PERFIL-------------");
     Console.WriteLine(p1);
   }
-
-  public static void CriarConta () {
-    Console.WriteLine("-------------CRIANDO UMA NOVA CONTA-------------");
-    Console.Write("Nome de usuario: ");
-    string nome = Console.ReadLine();
-    Console.Write("Seu ID: ");
-    int ID = int.Parse(Console.ReadLine());
-
-    Usuario usr = new Usuario(nome, ID);
-    Perfil perfil1 = new Perfil (usr);
-
-    u1.SetUsuario(usr);
-    p1.SetPerfil(perfil1);
-  }
+  
   public static void DadosConta () {
     Console.WriteLine(u1);
   }
@@ -117,8 +134,25 @@ class MainClass {
     Console.WriteLine("-------------CRIANDO UMA NOVA POSTAGEM-------------");
     Console.Write("Digite: ");
     string postagem = Console.ReadLine();
+    int idDaPostagem;
     
-    u1.NovoPost(postagem);
+    // instanciando um objeto da clase publicação
+    Publicacao p = new Publicacao(postagem);
+
+    // criando um ID para essa publicação
+    int max = 0;
+    List<Publicacao> lista = new List<Publicacao>();
+    lista = b1.ListarPublicacao();
+    for (int i = 0; i < lista.Count; i++) {
+      if (lista[i].ID > max) { max = lista[i].ID; }
+    }
+
+    // adicionando dados da publicação
+    p.ID = max + 1;
+    p.UsuarioEmail = p1.GEmail();
+    p.IDUsuario = u1.IDUsuario();
+
+    b1.setPub(p);
   }
 
   public static void EditarP () {

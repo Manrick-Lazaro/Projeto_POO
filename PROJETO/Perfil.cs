@@ -34,6 +34,11 @@ class Perfil {
       amigos++;
     }
   }
+  public void SetEXAmigo(bool x) {
+    if (x == true) {
+      amigos--;
+    }
+  }
 
   // Get Profile Data
   public string GetName () {
@@ -52,7 +57,7 @@ class Perfil {
     return city;
   }
   public int GetAmigos () {
-    return follows;
+    return amigos;
   }
   
 

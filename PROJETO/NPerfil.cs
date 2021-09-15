@@ -22,6 +22,12 @@ class NPerfil {
   public void Cidade () {
     pr.SetCity(Console.ReadLine());
   }
+  public void amigo (bool x) {
+    pr.SetAmigo(x);
+  }
+  public void amigoEX (bool x) {
+    pr.SetEXAmigo(x);
+  }
 
   public override string ToString () {
     return $"{pr.ToString()}";
