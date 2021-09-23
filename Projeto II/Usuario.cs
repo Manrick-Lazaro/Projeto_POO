@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 
-class Usuario {
-  private string usuario;
+class Usuario : IComparable<Usuario>{
+  private string emailUsuario;
   private string senha;
   private int id;
   private Perfil perfil;
@@ -11,15 +11,24 @@ class Usuario {
   private List<Usuario> amigos = new List<Usuario>();  
 
   public int ID { 
-    get { return ID; } 
+    get { return id; } 
     set { id = value; }
   }
 
   public Usuario (string user, string senha) {
-    this.usuario = user;
+    this.emailUsuario = user;
     this.senha = senha;
   }
 
+  public Usuario () {}
+
+  public string GetEmailUser () {
+    return emailUsuario;
+  }
+  public string GetSenhaUser () {
+    return senha;
+  }
+// --------------------------------------------------------------- //
   public void NovaPostagem (Publicacao p) {
     postagensUsuario.Add(p);
   }
@@ -50,7 +59,7 @@ class Usuario {
     amigos.Add(u);
   }
 
-  public Usuario[] GetFriends () {
+  public List<Usuario> GetFriends () {
     return amigos;
   } 
 
@@ -58,7 +67,15 @@ class Usuario {
     return perfil;
   }
 
+  public void AdicionarPerfil (Perfil p) {
+    perfil = p;
+  }
+
+  public int CompareTo (Usuario obj) {
+    return this.emailUsuario.CompareTo(obj.emailUsuario);
+  }
+  
   public override string ToString () {
-    return $"{ID}\n - {usuario}";
+    return $"{id} - {emailUsuario}";
   }
 }

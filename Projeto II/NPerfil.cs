@@ -8,20 +8,20 @@ class NPerfil {
   }
 
   // set dados do perfil
-  public void Nome () { 
-    perfil.Nome(Console.ReadLine());
+  public void Nome (string value) { 
+    perfil.Nome = value;
   }
-  public void Email () {
-    perfil.Email(Console.ReadLine());
+  public void Email (string value) {
+    perfil.Email = value;
   }
-  public void Telefone () {
-    perfil.Telefone(Console.ReadLine());
+  public void Telefone (string value) {
+    perfil.Telefone = value;
   } 
-  public void Data () {
-    perfil.Data((DateTime)Console.ReadLine());
+  public void Data (string value) {
+    perfil.Data = Convert.ToDateTime(value);
   } 
-  public void Cidade () {
-    perfil.Cidade(Console.ReadLine());
+  public void Cidade (string value) {
+    perfil.Cidade = value;
   }
 
   // get dados do perfil
@@ -34,7 +34,7 @@ class NPerfil {
   public string GTelefone () {
     return perfil.Telefone;
   } 
-  public string GData () {
+  public DateTime GData () {
     return perfil.Data;
   } 
   public string GCidade () {
@@ -42,6 +42,6 @@ class NPerfil {
   }
 
   public override string ToString () {
-    return $"{pefil.ToString()}";
+    return $"{perfil.ToString()}";
   }
 }

@@ -12,6 +12,7 @@ class Publicacao {
     get { return id; } 
     set { id = value; } 
   }
+  
   public int IDUsuario { 
     get { return id; } 
     set { idUsuario = value; } 
@@ -48,13 +49,14 @@ class Publicacao {
   }
 
   public override string ToString () {
-    Console.WriteLine($" -----Postagem-----\n->{Postagem}");
-    Console.WriteLine($"    -----ID-----\n->{ID}\n");
-    Console.WriteLine($" -----Curtidas-----\n->{curtidas}\n");
-    Console.WriteLine($"-----Comentarios-----");
-    for (int i = 0; i < comentarios.Count; i++) {
-      Console.WriteLine(comentarios[i]);
-    }
-    return "\n\n\n\n";    
+    Console.WriteLine("------------------------------------------------------");
+    Console.WriteLine($"{usuarioEmail}");
+    Console.WriteLine("______________________________________________________");
+    Console.WriteLine($"{Postagem}");
+    Console.WriteLine("______________________________________________________");
+    Console.WriteLine($" Curtidas - {curtidas}     Comentarios - {comentarios.Count}     ID - {id}");
+    Console.WriteLine("------------------------------------------------------");
+    Console.WriteLine($"\n\n");
+    return "\n\n";    
   }
 }

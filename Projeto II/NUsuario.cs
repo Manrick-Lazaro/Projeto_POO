@@ -11,24 +11,18 @@ class NUsuario {
     usuario = u;
   }
 
-  public void NovoPost (string a) {
-    
-    Random rnd = new Random ();
-    
-    novoNumero:
-    
-    int IDAletorio = rnd.Next(0, 10000);
-    
-    for (int i = 0; i < control; i++) {
-      if (IDAletorio == publicacoes[i].GetId()) {
-        goto novoNumero;
-      }
-    }
+  public int IDUsuario () {
+    return usuario.ID;
+  }
 
-    Publicacao postagem = new Publicacao(a, IDAletorio);
+  public Usuario GetUsuario () {
+    return usuario;
+  }
 
-    publicacoes[control] = postagem;
-    control++;
+// ------------------------------------------------------ //
+
+  public void NovoPost (Publicacao p) {
+    publicacoes.Add(p);
   }
 
   public List<Publicacao> ListarPostagens () { 
@@ -42,24 +36,22 @@ class NUsuario {
     return null;
   }
 
-  public void AtualizarPostagem (Publicacao x) {
-    Publicacao atualizacao = Listar(x.ID);
+  public void AtualizarPostagem (string n, int a) {
+    Publicacao atualizacao = Listar(a);
     if (atualizacao == null) 
       return;
-    atualizacao.EditarPostagem(x.Postagem);
+    atualizacao.EditarPostagem(n);
   }
 
   public void ExcluirPostagem (Publicacao p) {
     if (p != null) { publicacoes.Remove(p); }
   }
-  
-  public Usuario GetUsuario () {
-    return usuario;
-  }
-
-  public void AddAmigo (string nome, int id) {
-    Usuario a = new Usuario(nome, id);
-    amigos.Add(a);
+// ------------------------------------------------------ //
+  public void AddAmigo (int id) {
+    Banco b = new Banco ();
+    Usuario u = new Usuario ();
+    u = b.GetUsuario(id);
+    amigos.Add(u);
   }
 
   public List<Usuario> ListarAmigos () { 
@@ -75,10 +67,6 @@ class NUsuario {
 
   public void ExcluirAmigo (Usuario u) {
     amigos.Remove(u);
-  }
-
-  public int IDUsuario () {
-    return usuario.ID;
   }
   
   public override string ToString() {
