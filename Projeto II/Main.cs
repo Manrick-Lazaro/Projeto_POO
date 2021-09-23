@@ -110,10 +110,11 @@ class MainClass {
     string senhaLogin = Console.ReadLine();
 
     int x = 0;
+    int i;
 
     List<Usuario> listaDeVerificação = b1.ListarUsuarios();
 
-    for (int i = 0; i < listaDeVerificação.Count; i++) {
+    for (i = 0; i < listaDeVerificação.Count; i++) {
       if (listaDeVerificação[i].GetEmailUser() == emailLogin && listaDeVerificação[i].GetSenhaUser() == senhaLogin) {
         x = 1;    
         break;
@@ -124,6 +125,7 @@ class MainClass {
       Console.WriteLine("Login feito com sucesso\n\n");
       usuarioLogin = listaDeVerificação[i];
       u1.SetUsuario(usuarioLogin);
+      p1.SetPerfil(usuarioLogin.GetPerfil());
     }
     else{
       Console.WriteLine("Email ou senha incorreta!");

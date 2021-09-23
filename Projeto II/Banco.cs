@@ -48,7 +48,6 @@ class Banco {
   }
 
 // ---------------------------------------------------------------------- //
-
   public void NovoUsuario (Usuario u) {
     // criando um ID para esse usuario e adicionando-o no banco
     int max = 0;
