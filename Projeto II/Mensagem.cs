@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 
 class Mensagem {
-  private string conteudo;
-  private string eMail;
-  private int ID;
+  public string Conteudo { get; set; }
+  public string Email { get; set; }
+  public int ID { get; set; }
 }

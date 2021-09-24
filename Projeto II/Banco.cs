@@ -47,6 +47,15 @@ class Banco {
     c.Curtir();
   }
 
+  public void Comentar (int id, string coment) {
+    for (int i = 0; i < bancoPublicacoes.Count; i++){
+      if (bancoPublicacoes[i].ID == id) {
+        bancoPublicacoes[i].Comentar(coment);
+        break;
+      }
+    }
+  }
+
 // ---------------------------------------------------------------------- //
   public void NovoUsuario (Usuario u) {
     // criando um ID para esse usuario e adicionando-o no banco
@@ -68,4 +77,34 @@ class Banco {
         return bancoUsuarios[i];
     return null;
   }
+
+  public Usuario GetUsuario (string email) {
+    for (int i = 0; i < bancoUsuarios.Count; i++)
+      if (bancoUsuarios[i].GetEmailUser() == email) 
+        return bancoUsuarios[i];
+    return null;
+  }
+
+  public void Login(string email, string senha, ref NUsuario u1, ref NPerfil p1, ref Usuario usuarioLogin) {
+    int x = 0;
+    int i;
+    for (i = 0; i < bancoUsuarios.Count; i++) {
+      if (bancoUsuarios[i].GetEmailUser() == email && bancoUsuarios[i].GetSenhaUser() == senha) {
+        x = 1;    
+        break;
+      }
+    }
+
+    if (x == 1) {
+      Console.WriteLine("Login feito com sucesso\n\n");
+      usuarioLogin = bancoUsuarios[i];
+      u1.SetUsuario(usuarioLogin);
+      p1.SetPerfil(usuarioLogin.GetPerfil());
+    }
+    else{
+      Console.WriteLine("Email ou senha incorreta!");
+      Console.WriteLine("Tente novamente");
+    }
+  }
+  
 } 

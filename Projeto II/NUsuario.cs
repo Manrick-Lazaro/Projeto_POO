@@ -19,6 +19,10 @@ class NUsuario {
     return usuario;
   }
 
+  public string GetEmail () {
+    return usuario.GetEmailUser();
+  }
+
 // ------------------------------------------------------ //
 
   public void NovoPost (Publicacao p) {

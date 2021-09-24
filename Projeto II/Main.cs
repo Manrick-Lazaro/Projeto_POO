@@ -37,6 +37,8 @@ class MainClass {
             case 10: CurtirP(); break;
             case 11: AddAmigos(); break;
             case 12: ExcluirA(); break;
+            case 13: EnviarMensagem(); break;
+            case 14: Mensagens(); break;
             case 50: Sair(); break;
           }
         }
@@ -64,6 +66,8 @@ class MainClass {
     Console.WriteLine("10 - Curtir uma publicação");
     Console.WriteLine("11 - Adicionar amigo");
     Console.WriteLine("12 - Excluir amigo");
+    Console.WriteLine("13 - Enviar Mensagem");
+    Console.WriteLine("14 - Mensagens");
     Console.WriteLine("50 - Sair");
     Console.WriteLine("0  - Finalizar programa");
     Console.Write("Escolha uma opcao: ");
@@ -73,7 +77,7 @@ class MainClass {
   }
 
   public static int MenuUsuarioNaoLogado () {
-    Console.WriteLine("-------------MENU-------------");
+    Console.WriteLine("-------------TELA DE LOGIN-------------");
     Console.WriteLine();
     Console.WriteLine("1 - Criar uma conta");
     Console.WriteLine("2 - Entrar");
@@ -109,32 +113,9 @@ class MainClass {
     Console.Write("Senha: ");
     string senhaLogin = Console.ReadLine();
 
-    int x = 0;
-    int i;
-
-    List<Usuario> listaDeVerificação = b1.ListarUsuarios();
-
-    for (i = 0; i < listaDeVerificação.Count; i++) {
-      if (listaDeVerificação[i].GetEmailUser() == emailLogin && listaDeVerificação[i].GetSenhaUser() == senhaLogin) {
-        x = 1;    
-        break;
-      }
-    }
-
-    if (x == 1) {
-      Console.WriteLine("Login feito com sucesso\n\n");
-      usuarioLogin = listaDeVerificação[i];
-      u1.SetUsuario(usuarioLogin);
-      p1.SetPerfil(usuarioLogin.GetPerfil());
-    }
-    else{
-      Console.WriteLine("Email ou senha incorreta!");
-      Console.WriteLine("Tente novamente");
-    }
+    b1.Login(emailLogin, senhaLogin, ref u1, ref p1, ref usuarioLogin);
   }
-
 // -------------------------------------------------------------- //
-
   public static void PerfilEditar () {    
     Console.WriteLine("-------------EDITANDO PERFIL-------------");
     Console.WriteLine();
@@ -230,7 +211,7 @@ class MainClass {
     Console.Write("Comente: ");
     string comentario = Console.ReadLine();
 
-    //u1.Comentar(id, comentario);
+    b1.Comentar(id, comentario);
   }
 
   public static void CurtirP () {
@@ -259,4 +240,32 @@ class MainClass {
   public static void Sair () {
     usuarioLogin = null;
   }
+
+  public static void EnviarMensagem () {
+    Console.WriteLine("-------------ENVIANDO MENSAGEM-------------");
+    Console.Write("Pesquisar: ");
+    string emailEnviarMensagem = Console.ReadLine();
+
+    Usuario usuario = b1.GetUsuario(emailEnviarMensagem);
+    Mensagem mensagem = new Mensagem();
+
+    if (usuario == null) {
+      Console.WriteLine("Nenhum usuario com esse email encontrado.");
+    }
+    else{
+      Console.Write("Envie sua mensagem: ");
+      string m = Console.ReadLine();
+      
+      mensagem.Conteudo = m;
+      mensagem.Email = u1.GetEmail();
+      mensagem.ID = u1.IDUsuario();
+
+      usuario.Mensagem(mensagem);
+    }
+  }
+
+  public static void Mensagens () {
+    Console.WriteLine("-------------MENSAGENS RECEBIDAS-------------");
+    
+  } 
 }
