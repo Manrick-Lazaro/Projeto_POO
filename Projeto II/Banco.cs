@@ -1,5 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
+using System.Text;
+using System.IO;
 
 /*
   o objetivo dessa classe é armazenar todas as publicações 
@@ -10,6 +13,33 @@ class Banco {
   private List<Publicacao> bancoPublicacoes = new List<Publicacao>();
   private List<Usuario> bancoUsuarios = new List<Usuario>();
 
+
+  public void AbrirUsuarios () {
+    StreamReader usu = new StreamReader("./usuario.xml", Encoding.Default);
+    XmlSerializer xml = new XmlSerializer (typeof(List<Usuario>));
+    bancoUsuarios = (List<Usuario>)xml.Deserialize(usu);
+    usu.Close();
+  }
+  public void SalvarUsuarios() {
+      StreamWriter x  = new StreamWriter ("./usuario.xml", false, Encoding.Default);
+      XmlSerializer xml = new XmlSerializer(typeof(List<Usuario>));
+      xml.Serialize(x, bancoUsuarios);
+      x.Close();
+  }
+
+  public void AbrirPublicacoes () {
+    StreamReader pub = new StreamReader("./publicacoes.xml", Encoding.Default);
+    XmlSerializer xml = new XmlSerializer (typeof(List<Publicacao>));
+    bancoPublicacoes = (List<Publicacao>)xml.Deserialize(pub);
+    pub.Close();
+  }
+  public void SalvarPublicacoes() {
+      StreamWriter y  = new StreamWriter ("./publicacoes.xml", false, Encoding.Default);
+      XmlSerializer xml = new XmlSerializer(typeof(List<Publicacao>));
+      xml.Serialize(y, bancoPublicacoes);
+      y.Close();
+  }
+// ---------------------------------------------------------------------- //
   public void setPub (Publicacao p) {
     // criando um ID para essa publicação
     int max = 0;
@@ -46,16 +76,6 @@ class Banco {
     Publicacao c = Listar(p);
     c.Curtir();
   }
-
-  public void Comentar (int id, string coment) {
-    for (int i = 0; i < bancoPublicacoes.Count; i++){
-      if (bancoPublicacoes[i].ID == id) {
-        bancoPublicacoes[i].Comentar(coment);
-        break;
-      }
-    }
-  }
-
 // ---------------------------------------------------------------------- //
   public void NovoUsuario (Usuario u) {
     // criando um ID para esse usuario e adicionando-o no banco
@@ -80,7 +100,7 @@ class Banco {
 
   public Usuario GetUsuario (string email) {
     for (int i = 0; i < bancoUsuarios.Count; i++)
-      if (bancoUsuarios[i].GetEmailUser() == email) 
+      if (bancoUsuarios[i].GetEmailUser == email) 
         return bancoUsuarios[i];
     return null;
   }
@@ -89,7 +109,7 @@ class Banco {
     int x = 0;
     int i;
     for (i = 0; i < bancoUsuarios.Count; i++) {
-      if (bancoUsuarios[i].GetEmailUser() == email && bancoUsuarios[i].GetSenhaUser() == senha) {
+      if (bancoUsuarios[i].GetEmailUser == email && bancoUsuarios[i].GetSenhaUser == senha) {
         x = 1;    
         break;
       }
@@ -99,7 +119,7 @@ class Banco {
       Console.WriteLine("Login feito com sucesso\n\n");
       usuarioLogin = bancoUsuarios[i];
       u1.SetUsuario(usuarioLogin);
-      p1.SetPerfil(usuarioLogin.GetPerfil());
+      p1.SetPerfil(usuarioLogin.PerfilU);
     }
     else{
       Console.WriteLine("Email ou senha incorreta!");

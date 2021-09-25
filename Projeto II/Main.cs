@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Threading;
 
 
-class MainClass {
+public class MainClass {
   private static NUsuario u1 = new NUsuario();
   private static NPerfil p1 = new NPerfil();
   private static Banco b1 = new Banco();
@@ -14,6 +14,14 @@ class MainClass {
     Thread.CurrentThread.CurrentCulture = new CultureInfo ("pt-BR");
     int opcao = 0;
     
+    try {
+      b1.AbrirUsuarios();
+      b1.AbrirPublicacoes();
+    }
+    catch (Exception erro) {
+      Console.WriteLine(erro.Message);
+    }
+
     do {
       try {
         if (usuarioLogin == null) {
@@ -34,11 +42,15 @@ class MainClass {
             case 7: EditarP(); break;
             case 8: ExcluirP(); break;
             case 9: ComentarP(); break;
-            case 10: CurtirP(); break;
-            case 11: AddAmigos(); break;
-            case 12: ExcluirA(); break;
-            case 13: EnviarMensagem(); break;
-            case 14: Mensagens(); break;
+            case 10: ExcluirComentario(); break;
+            case 11: EditarComentario(); break;
+            case 12: CurtirP(); break;
+            case 13: RetirarCurtida(); break;
+            case 14: AddAmigos(); break;
+            case 15: ExcluirA(); break;
+            case 16: EnviarMensagem(); break;
+            case 17: Mensagens(); break;
+            case 18: Comentarios(); break;
             case 50: Sair(); break;
           }
         }
@@ -48,6 +60,14 @@ class MainClass {
         opcao = 100;
       }
     } while (opcao != 0);
+
+    try {
+      b1.SalvarUsuarios();
+      b1.SalvarPublicacoes();
+    }
+    catch (Exception erro) {
+      Console.WriteLine(erro.Message);
+    }
 
     Console.WriteLine("Programa encerrado");
   }
@@ -62,12 +82,16 @@ class MainClass {
     Console.WriteLine("6  - Criar uma publicação");
     Console.WriteLine("7  - Editar publicação");
     Console.WriteLine("8  - Excluir uma publicação");
-    Console.WriteLine("9  - Comentar uma publicação");
-    Console.WriteLine("10 - Curtir uma publicação");
-    Console.WriteLine("11 - Adicionar amigo");
-    Console.WriteLine("12 - Excluir amigo");
-    Console.WriteLine("13 - Enviar Mensagem");
-    Console.WriteLine("14 - Mensagens");
+    Console.WriteLine("9  - Comentar na publicação");
+    Console.WriteLine("10 - Retirar comentario da publicação");
+    Console.WriteLine("11 - editar comentario da publicação");
+    Console.WriteLine("12 - Curtir uma publicação");
+    Console.WriteLine("13 - Retirar curtida da publicação");
+    Console.WriteLine("14 - Adicionar amigo");
+    Console.WriteLine("15 - Excluir amigo");
+    Console.WriteLine("16 - Enviar Mensagem");
+    Console.WriteLine("17 - Mensagens");
+    Console.WriteLine("18 - Comentatios");
     Console.WriteLine("50 - Sair");
     Console.WriteLine("0  - Finalizar programa");
     Console.Write("Escolha uma opcao: ");
@@ -105,7 +129,7 @@ class MainClass {
     u1.SetUsuario(usr); 
     p1.SetPerfil(perfil1);
     p1.Email(email); // adiciona o email de usuario ao perfil
-    usr.AdicionarPerfil(perfil1); // adiciona perfil ao usuario
+    usr.PerfilU = perfil1; // adiciona perfil ao usuario
   }
   public static void Login () {
     Console.Write("E-mail: ");
@@ -207,11 +231,22 @@ class MainClass {
     Console.WriteLine();
     Console.Write("Digite o id da postagem: ");
     int id = int.Parse(Console.ReadLine());
-    Console.WriteLine();
-    Console.Write("Comente: ");
-    string comentario = Console.ReadLine();
 
-    b1.Comentar(id, comentario);
+    Publicacao p = b1.Listar(id);
+    Comentario comentario = new Comentario();
+
+    if (p == null) {
+      Console.WriteLine("Nenhuma publicação com esse id encontrado.");
+    }
+    else{
+      Console.Write("Comente: ");
+      string c = Console.ReadLine();
+      
+      comentario.Conteudo = c;
+      comentario.Email = u1.GetEmail();
+
+      p.Comentar(comentario);
+    }
   }
 
   public static void CurtirP () {
@@ -267,5 +302,39 @@ class MainClass {
   public static void Mensagens () {
     Console.WriteLine("-------------MENSAGENS RECEBIDAS-------------");
     
+    List<Mensagem> m = u1.MensagensRecebidas;
+
+    foreach(Mensagem mensagem in m) {
+      Console.WriteLine(mensagem);
+    }
   } 
+
+  public static void Comentarios () {
+    Console.WriteLine("-------------COMENTARIOS DA PUBLICAÇÃO-------------");
+    Console.WriteLine("ID da publicação");
+    Console.Write("digite: ");
+    int id = int.Parse(Console.ReadLine());
+
+    Publicacao p = b1.GetPub(id);
+    List<Comentario> comentarios = p.GetComentarios();
+
+    foreach(Comentario c in comentarios) {
+      Console.WriteLine(c);
+    }
+  } 
+
+  public static void ExcluirComentario(){
+    Console.WriteLine("-------------EXCLUINDO COMENTÁRIO-------------");
+    Console.WriteLine("ID da publicação");
+    Console.WriteLine("digite: ");
+    int id = int.Parse(Console.ReadLine());
+  }
+
+  public static void EditarComentario(){
+
+  }
+
+  public static void RetirarCurtida(){
+
+  }
 }

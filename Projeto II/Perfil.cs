@@ -1,7 +1,6 @@
 using System;
 
-class Perfil { 
-  
+public class Perfil { 
   public string Nome { get; set; }
   public string Email { get; set; }
   public string Telefone { get; set; }

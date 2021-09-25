@@ -1,34 +1,37 @@
 using System;
 using System.Collections.Generic;
 
-class Usuario : IComparable<Usuario>{
+public class Usuario : IComparable<Usuario>{
   private string emailUsuario;
   private string senha;
   private int id;
   private Perfil perfil;
   private List<Publicacao> postagensUsuario = new List<Publicacao>();
-  private List<Mensagem> Mensagens = new List<Mensagem>();
+  private List<Mensagem> mensagens = new List<Mensagem>();
   private List<Usuario> amigos = new List<Usuario>();  
 
-  public int ID { 
-    get { return id; } 
-    set { id = value; }
-  }
-
+  // contrutor
   public Usuario (string user, string senha) {
     this.emailUsuario = user;
     this.senha = senha;
   }
   public Usuario () {}
 // --------------------------------------------------------------- //
-  public string GetEmailUser () {
-    return emailUsuario;
+  public string GetEmailUser {
+    get { return emailUsuario; }
+    set { emailUsuario = value; }
   }
-  public string GetSenhaUser () {
-    return senha;
+  public string GetSenhaUser {
+    get { return senha; }
+    set { senha = value; }
   }
-  public Perfil GetPerfil () {
-    return perfil;
+  public int ID { 
+    get { return id; } 
+    set { id = value; }
+  }
+  public Perfil PerfilU {
+    get { return perfil; }
+    set { perfil = value; }
   }
   public List<Publicacao> GetPublicacao () {
     return postagensUsuario;
@@ -39,11 +42,11 @@ class Usuario : IComparable<Usuario>{
         return postagensUsuario[i];
     return null;
   }
-  public List<Usuario> GetFriends () {
-    return amigos;
+  public List<Usuario> GetFriends {
+    get {return amigos;}
   }
-  public List<Mensagem> GetMenagens () {
-    return Mensagens;
+  public List<Mensagem> GetMenagens {
+    get {return mensagens;}
   }
 // --------------------------------------------------------------- //
   public void NovaPostagem (Publicacao p) {
@@ -61,14 +64,11 @@ class Usuario : IComparable<Usuario>{
   public void AddFriends (Usuario u) {
     amigos.Add(u);
   }
-  public void AdicionarPerfil (Perfil p) {
-    perfil = p;
-  }
   public int CompareTo (Usuario obj) {
     return this.emailUsuario.CompareTo(obj.emailUsuario);
   }
   public void Mensagem (Mensagem m) {
-    Mensagens.Add(m);
+    mensagens.Add(m);
   }
    public override string ToString () {
     return $"{id} - {emailUsuario}";

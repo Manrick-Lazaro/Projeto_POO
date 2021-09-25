@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 
-class Publicacao {
-  private List<string> comentarios = new List<string>();
+public class Publicacao {
+  private List<Comentario> comentarios = new List<Comentario>();
   private int curtidas = 0;
   private int id;
   private int idUsuario;
@@ -12,7 +12,6 @@ class Publicacao {
     get { return id; } 
     set { id = value; } 
   }
-  
   public int IDUsuario { 
     get { return id; } 
     set { idUsuario = value; } 
@@ -28,20 +27,23 @@ class Publicacao {
   public Publicacao (string postagem) {
     this.Postagem = postagem;
   }
+  public Publicacao () { }
 
   // set
   public void EditarPostagem (string postagem) {
     this.Postagem = postagem;
   }
-  public void Comentar (string comentario) {
+  public void Comentar (Comentario comentario) {
     comentarios.Add(comentario);
+  }
+  public void ExcluirComentario (Comentario c) {
+    comentarios.Remove(c);
   }
   public void Curtir () {
       curtidas++;
   }
-  
   // get
-  public List<string> GetComentarios () {
+  public List<Comentario> GetComentarios () {
     return comentarios;
   }
   public string GetCurtidas () {
@@ -56,7 +58,6 @@ class Publicacao {
     Console.WriteLine("______________________________________________________");
     Console.WriteLine($" Curtidas - {curtidas}     Comentarios - {comentarios.Count}     ID - {id}");
     Console.WriteLine("------------------------------------------------------");
-    Console.WriteLine($"\n\n");
     return "\n\n";    
   }
 }

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfUsuario xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Usuario>
+    <GetEmailUser>a</GetEmailUser>
+    <GetSenhaUser>a</GetSenhaUser>
+    <ID>1</ID>
+    <PerfilU>
+      <Email>a</Email>
+      <Data>0001-01-01T00:00:00</Data>
+    </PerfilU>
+    <GetFriends />
+    <GetMenagens />
+  </Usuario>
+  <Usuario>
+    <GetEmailUser>z</GetEmailUser>
+    <GetSenhaUser>z</GetSenhaUser>
+    <ID>2</ID>
+    <PerfilU>
+      <Email>z</Email>
+      <Data>0001-01-01T00:00:00</Data>
+    </PerfilU>
+    <GetFriends />
+    <GetMenagens>
+      <Mensagem>
+        <Conteudo>ola</Conteudo>
+        <Email>a</Email>
+        <ID>1</ID>
+      </Mensagem>
+    </GetMenagens>
+  </Usuario>
+</ArrayOfUsuario>

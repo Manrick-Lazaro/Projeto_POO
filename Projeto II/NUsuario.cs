@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
 
-class NUsuario {
+public class NUsuario {
   private Usuario usuario;
   private List<Publicacao> publicacoes = new List<Publicacao>();
-  private List<Mensagem> Mensagens = new List<Mensagem>();
   private List<Usuario> amigos = new List<Usuario>();
   
   public void SetUsuario (Usuario u) {
@@ -20,7 +19,11 @@ class NUsuario {
   }
 
   public string GetEmail () {
-    return usuario.GetEmailUser();
+    return usuario.GetEmailUser;
+  }
+
+  public List<Mensagem> MensagensRecebidas {
+    get {return usuario.GetMenagens;}
   }
 
 // ------------------------------------------------------ //
