@@ -11,4 +11,15 @@
     <GetFriends />
     <GetMenagens />
   </Usuario>
+  <Usuario>
+    <GetEmailUser>z</GetEmailUser>
+    <GetSenhaUser>z</GetSenhaUser>
+    <ID>2</ID>
+    <PerfilU>
+      <Email>z</Email>
+      <Data>0001-01-01T00:00:00</Data>
+    </PerfilU>
+    <GetFriends />
+    <GetMenagens />
+  </Usuario>
 </ArrayOfUsuario>

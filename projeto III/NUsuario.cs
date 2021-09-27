@@ -55,23 +55,6 @@ public class NUsuario {
     if (p != null) { publicacoes.Remove(p); }
   }
 
-  public void RetirarLike () {
-
-  }
-  
-  public void Comentar () {
-
-  }
-
-  public void ExcluirComentario () {
-
-  }
-
-  public void EditarComentario () {
-
-  }
-
-
 // ------------------------------------------------------ //
   public void AddAmigo (int id) {
     Banco b = new Banco ();

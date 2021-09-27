@@ -241,9 +241,11 @@ public class MainClass {
     else{
       Console.Write("Comente: ");
       string c = Console.ReadLine();
-      
-      comentario.Conteudo = c;
+      int idc = b1.IDComentario(p);
+
       comentario.Email = u1.GetEmail();
+      comentario.Conteudo = c;
+      comentario.ID = idc;
 
       p.Comentar(comentario);
     }
@@ -336,6 +338,11 @@ public class MainClass {
   }
 
   public static void RetirarCurtida(){
+    Console.WriteLine("-------------EXCLUINDO COMENTÁRIO-------------");
+    Console.WriteLine("ID da publicação");
+    Console.Write("digite: ");
+    int id = int.Parse(Console.ReadLine());
 
+    b1.RetirarLike(id, u1.GetEmail());
   }
 }

@@ -93,6 +93,39 @@ class Banco {
       p.SetCurtida(c);
     } 
   }
+
+  public void RetirarLike (int id, string email) {
+    Publicacao p = Listar(id); 
+
+    List<Curtida> curt = p.Curtidas;
+    Curtida c;
+
+    for (int i = 0; i < curt.Count; i++){
+      if (email == curt[i].Mail) {
+        c = curt[i];
+        curt.Remove(c);
+        break;
+      }
+    }
+  }
+
+  public int IDComentario (Publicacao p) {
+    List<Comentario> coment = p.GetComentarios;
+
+    int max = 0;
+    for (int i = 0; i < coment.Count; i++) {
+      if (coment[i].ID > max) { max = coment[i].ID; }
+    }
+    return max + 1; 
+  }
+
+  public void ExcluirComentario () {
+
+  }
+
+  public void EditarComentario () {
+
+  }
 // ---------------------------------------------------------------------- //
   public void NovoUsuario (Usuario u) {
     // criando um ID para esse usuario e adicionando-o no banco

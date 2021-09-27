@@ -8,11 +8,11 @@ public class Comentario {
   
   public override string ToString () {
     Console.WriteLine("------------------------------------------------------");
-    Console.WriteLine($"{Email}    -    {ID}");
+    Console.WriteLine($"USUÁRIO: {Email}    -    ID DO COMENTÁRIO: {ID}");
     Console.WriteLine("______________________________________________________");
     Console.WriteLine($"{Conteudo}");
     Console.WriteLine("______________________________________________________");
     Console.WriteLine("------------------------------------------------------");
-    return "\n\n"; 
+    return ""; 
   }
 }

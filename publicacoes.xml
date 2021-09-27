@@ -5,11 +5,30 @@
     <IDUsuario>1</IDUsuario>
     <UsuarioEmail>a</UsuarioEmail>
     <Postagem>16</Postagem>
-    <GetComentarios />
+    <GetComentarios>
+      <Comentario>
+        <Conteudo>comentario 1</Conteudo>
+        <Email>z</Email>
+        <ID>1</ID>
+      </Comentario>
+      <Comentario>
+        <Conteudo>comentario 2</Conteudo>
+        <Email>z</Email>
+        <ID>2</ID>
+      </Comentario>
+    </GetComentarios>
     <Curtidas>
       <Curtida>
         <Mail>a</Mail>
       </Curtida>
     </Curtidas>
+  </Publicacao>
+  <Publicacao>
+    <ID>2</ID>
+    <IDUsuario>2</IDUsuario>
+    <UsuarioEmail>a</UsuarioEmail>
+    <Postagem>publicacao 2</Postagem>
+    <GetComentarios />
+    <Curtidas />
   </Publicacao>
 </ArrayOfPublicacao>

@@ -50,13 +50,17 @@ public class Publicacao {
   }
 
   public override string ToString () {
-    Console.WriteLine("------------------------------------------------------");
-    Console.WriteLine($"{usuarioEmail}");
+    Console.WriteLine("- - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+    Console.WriteLine($"USUÁRIO: {usuarioEmail}");
     Console.WriteLine("______________________________________________________");
-    Console.WriteLine($"{Postagem}");
+    Console.WriteLine($"PUBLICAÇÃO: {Postagem}");
     Console.WriteLine("______________________________________________________");
-    Console.WriteLine($" Curtidas - {curtidas.Count}     Comentarios - {comentarios.Count}     ID - {id}");
-    Console.WriteLine("------------------------------------------------------");
-    return "\n\n";    
+    Console.WriteLine($" Curtidas - {curtidas.Count}     Comentários - {comentarios.Count}     ID - {id}\n");
+    Console.WriteLine("               -----comentários-----");
+    foreach(Comentario c in comentarios){
+      Console.WriteLine(c);
+    }
+    Console.WriteLine("- - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+    return "\n";    
   }
 }
