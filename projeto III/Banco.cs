@@ -64,9 +64,34 @@ class Banco {
     return null;
   }
 
-  public void Curtir (int p) {
-    Publicacao c = Listar(p);
-    c.Curtidas = 1;
+  public void AtualizarPublicacao (Publicacao p) {
+    for (int i = 0; i < bancoPublicacoes.Count; i++){
+      if (p.ID == bancoPublicacoes[i].ID) {
+        bancoPublicacoes[i] = p;
+        break;
+      }
+    }
+  }
+
+  public void Curtir (int id, string email) {
+    Curtida c = new Curtida();
+    
+    Publicacao p = Listar(id); 
+    c.Mail = email;
+    
+    List<Curtida> curt = p.Curtidas;
+
+    int jaTem = 0;
+
+    for (int i = 0; i < curt.Count; i++){
+      if (email == curt[i].Mail) {
+        jaTem=1;
+        break;
+      }
+    }
+    if (jaTem == 0){
+      p.SetCurtida(c);
+    } 
   }
 // ---------------------------------------------------------------------- //
   public void NovoUsuario (Usuario u) {

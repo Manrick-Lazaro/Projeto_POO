@@ -3,9 +3,10 @@ using System.Collections.Generic;
 
 public class Publicacao {
   private List<Comentario> comentarios = new List<Comentario>();
-  private int curtidas;
+  private List<Curtida> curtidas = new List<Curtida>();
   private int id;
   private int idUsuario;
+  private int x;
   private string usuarioEmail;
 
   public int ID { 
@@ -24,9 +25,8 @@ public class Publicacao {
   public List<Comentario> GetComentarios {
     get { return comentarios; }
   }
-  public int Curtidas {
-    get { return curtidas; }
-    set { curtidas = curtidas + value; }
+  public List<Curtida> Curtidas {
+    get {return curtidas;}
   }
   
   // construtor
@@ -45,6 +45,9 @@ public class Publicacao {
   public void ExcluirComentario (Comentario c) {
     comentarios.Remove(c);
   }
+  public void SetCurtida (Curtida c) {
+    curtidas.Add(c);
+  }
 
   public override string ToString () {
     Console.WriteLine("------------------------------------------------------");
@@ -52,7 +55,7 @@ public class Publicacao {
     Console.WriteLine("______________________________________________________");
     Console.WriteLine($"{Postagem}");
     Console.WriteLine("______________________________________________________");
-    Console.WriteLine($" Curtidas - {curtidas}     Comentarios - {comentarios.Count}     ID - {id}");
+    Console.WriteLine($" Curtidas - {curtidas.Count}     Comentarios - {comentarios.Count}     ID - {id}");
     Console.WriteLine("------------------------------------------------------");
     return "\n\n";    
   }

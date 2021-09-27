@@ -253,7 +253,8 @@ public class MainClass {
     Console.WriteLine("-------------CURTINDO UMA POSTAGEM-------------");
     Console.Write("Digite uma ID: ");
     int x = int.Parse(Console.ReadLine());
-    b1.Curtir(x);
+    
+    b1.Curtir(x, u1.GetEmail());
   }
 
   public static void AddAmigos () {
