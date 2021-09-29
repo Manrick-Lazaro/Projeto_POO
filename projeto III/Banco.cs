@@ -119,12 +119,17 @@ class Banco {
     return max + 1; 
   }
 
-  public void ExcluirComentario () {
+  public void ExcluirComentario (int id, string email, int idComent) {
+    Publicacao p = Listar(id); 
 
-  }
-
-  public void EditarComentario () {
-
+    List<Comentario> coment = p.GetComentarios;
+    
+    for (int i = 0; i < coment.Count; i++) {
+      if (email == coment[i].Email && idComent == coment[i].ID){
+        Comentario x = coment[i];
+        coment.Remove(x);
+      }
+    }
   }
 // ---------------------------------------------------------------------- //
   public void NovoUsuario (Usuario u) {
@@ -137,7 +142,7 @@ class Banco {
     bancoUsuarios.Add(u);
   }
 
-  public List<Usuario> ListarUsuarios () {
+  public List<Usuario> ListarUsuarios() {
     return bancoUsuarios;
   } 
 
@@ -148,7 +153,7 @@ class Banco {
     return null;
   }
 
-  public Usuario GetUsuario (string email) {
+  public Usuario GetUsuarioMail (string email) {
     for (int i = 0; i < bancoUsuarios.Count; i++)
       if (bancoUsuarios[i].GetEmailUser == email) 
         return bancoUsuarios[i];

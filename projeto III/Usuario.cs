@@ -64,6 +64,9 @@ public class Usuario : IComparable<Usuario>{
   public void AddFriends (Usuario u) {
     amigos.Add(u);
   }
+  public void RemoveFriends (Usuario u) {
+    amigos.Remove(u);
+  }
   public int CompareTo (Usuario obj) {
     return this.emailUsuario.CompareTo(obj.emailUsuario);
   }
@@ -71,6 +74,6 @@ public class Usuario : IComparable<Usuario>{
     mensagens.Add(m);
   }
    public override string ToString () {
-    return $"{id} - {emailUsuario}";
+    return $"id: {id}   -   Email: {emailUsuario}";
   }
 }

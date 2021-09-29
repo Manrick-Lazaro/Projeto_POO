@@ -54,15 +54,12 @@ public class NUsuario {
     if (p != null) { publicacoes.Remove(p); }
   }
 // ------------------------------------------------------ //
-  public void AddAmigo (int id) {
-    Banco b = new Banco ();
-    Usuario u = new Usuario ();
-    u = b.GetUsuario(id);
-    amigos.Add(u);
+  public void AddAmigo (Usuario u) {
+    usuario.AddFriends(u);
   }
 
   public List<Usuario> ListarAmigos () { 
-    return amigos;
+    return usuario.GetFriends;
   }
 
   public Usuario GetAmigo (int ID) {

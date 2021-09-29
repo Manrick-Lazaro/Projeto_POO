@@ -43,14 +43,14 @@ public class MainClass {
             case 8: ExcluirP(); break;
             case 9: ComentarP(); break;
             case 10: ExcluirComentario(); break;
-            case 11: EditarComentario(); break;
-            case 12: CurtirP(); break;
-            case 13: RetirarCurtida(); break;
-            case 14: AddAmigos(); break;
-            case 15: ExcluirA(); break;
-            case 16: EnviarMensagem(); break;
-            case 17: Mensagens(); break;
-            case 18: Comentarios(); break;
+            case 11: CurtirP(); break;
+            case 12: RetirarCurtida(); break;
+            case 13: AddAmigos(); break;
+            case 14: ExcluirA(); break;
+            case 15: EnviarMensagem(); break;
+            case 16: Mensagens(); break;
+            case 17: Comentarios(); break;
+            case 18: Amigos(); break;
             case 50: Sair(); break;
           }
         }
@@ -84,14 +84,14 @@ public class MainClass {
     Console.WriteLine("8  - Excluir uma publicação");
     Console.WriteLine("9  - Comentar na publicação");
     Console.WriteLine("10 - Retirar comentario da publicação");
-    Console.WriteLine("11 - editar comentario da publicação");
-    Console.WriteLine("12 - Curtir uma publicação");
-    Console.WriteLine("13 - Retirar curtida da publicação");
-    Console.WriteLine("14 - Adicionar amigo");
-    Console.WriteLine("15 - Excluir amigo");
-    Console.WriteLine("16 - Enviar Mensagem");
-    Console.WriteLine("17 - Mensagens");
-    Console.WriteLine("18 - Comentatios");
+    Console.WriteLine("11 - Curtir uma publicação");
+    Console.WriteLine("12 - Retirar curtida da publicação");
+    Console.WriteLine("13 - Adicionar amigo");
+    Console.WriteLine("14 - Excluir amigo");
+    Console.WriteLine("15 - Enviar Mensagem");
+    Console.WriteLine("16 - Mensagens");
+    Console.WriteLine("17 - Comentatios");
+    Console.WriteLine("18 - Amigos");
     Console.WriteLine("50 - Sair");
     Console.WriteLine("0  - Finalizar programa");
     Console.Write("Escolha uma opcao: ");
@@ -261,17 +261,22 @@ public class MainClass {
 
   public static void AddAmigos () {
     Console.WriteLine("-------------ADICIONANDO UM AMIGO-------------");
-    Console.Write("Digite uma ID: ");
-    int id = int.Parse(Console.ReadLine());
+    Console.Write("Digite o email: ");
+    string email = Console.ReadLine();
 
-    u1.AddAmigo(id);
+    Usuario uu = new Usuario ();
+
+    uu = b1.GetUsuarioMail(email);
+  
+    u1.AddAmigo(uu);
   }
 
   public static void ExcluirA () {
     Console.WriteLine("-------------EXCLUINDO AMIGO-------------");
-    Console.Write("informe o ID: ");
-    int ID_User_Del = int.Parse(Console.ReadLine());
-    Usuario user_del = u1.GetAmigo(ID_User_Del);
+    Console.Write("informe o email: ");
+    string email_User_Del = Console.ReadLine();
+    
+    Usuario user_del = u1.GetAmigo(email_User_Del);
     u1.ExcluirAmigo(user_del);
   }
 
@@ -284,7 +289,7 @@ public class MainClass {
     Console.Write("Pesquisar: ");
     string emailEnviarMensagem = Console.ReadLine();
 
-    Usuario usuario = b1.GetUsuario(emailEnviarMensagem);
+    Usuario usuario = b1.GetUsuarioMail(emailEnviarMensagem);
     Mensagem mensagem = new Mensagem();
 
     if (usuario == null) {
@@ -331,10 +336,12 @@ public class MainClass {
     Console.WriteLine("ID da publicação");
     Console.WriteLine("digite: ");
     int id = int.Parse(Console.ReadLine());
-  }
+  
+    Console.WriteLine("ID do comentario");
+    Console.WriteLine("digite: ");
+    int idC = int.Parse(Console.ReadLine());
 
-  public static void EditarComentario(){
-
+    b1.ExcluirComentario(id, u1.GetEmail(), idC);
   }
 
   public static void RetirarCurtida(){
@@ -344,5 +351,14 @@ public class MainClass {
     int id = int.Parse(Console.ReadLine());
 
     b1.RetirarLike(id, u1.GetEmail());
+  }
+
+  public static void Amigos(){
+    Console.WriteLine("-------------Amigos-------------");
+    Console.WriteLine();
+    List<Usuario> amg = new List<Usuario>();    
+    amg = u1.ListarAmigos();
+    foreach (Usuario u in amg)
+      Console.WriteLine(u);
   }
 }

@@ -12,11 +12,11 @@
     <GetMenagens />
   </Usuario>
   <Usuario>
-    <GetEmailUser>z</GetEmailUser>
-    <GetSenhaUser>z</GetSenhaUser>
+    <GetEmailUser>q</GetEmailUser>
+    <GetSenhaUser>q</GetSenhaUser>
     <ID>2</ID>
     <PerfilU>
-      <Email>z</Email>
+      <Email>q</Email>
       <Data>0001-01-01T00:00:00</Data>
     </PerfilU>
     <GetFriends />

@@ -56,26 +56,44 @@ public class NUsuario {
   }
 
 // ------------------------------------------------------ //
-  public void AddAmigo (int id) {
-    Banco b = new Banco ();
-    Usuario u = new Usuario ();
-    u = b.GetUsuario(id);
-    amigos.Add(u);
+  public void AddAmigo (Usuario u) {
+    amigos = usuario.GetFriends;
+
+    int jaTem = 0;
+    for (int i = 0; i < amigos.Count; i++){
+      if (amigos[i].GetEmailUser == u.GetEmailUser){
+        jaTem = 1;
+        break;
+      }
+    }
+
+    if (jaTem == 0) {
+      usuario.AddFriends(u);
+    }
   }
 
   public List<Usuario> ListarAmigos () { 
-    return amigos;
+    return usuario.GetFriends;
   }
 
   public Usuario GetAmigo (int ID) {
+    amigos = usuario.GetFriends;
     for (int i = 0; i < amigos.Count; i++)
       if (amigos[i].ID == ID) 
         return amigos[i];
     return null;
   }
 
+  public Usuario GetAmigo (string email) {
+    amigos = usuario.GetFriends;
+    for (int i = 0; i < amigos.Count; i++)
+      if (amigos[i].GetEmailUser == email) 
+        return amigos[i];
+    return null;
+  }
+
   public void ExcluirAmigo (Usuario u) {
-    amigos.Remove(u);
+    usuario.RemoveFriends(u);
   }
   
   public override string ToString() {

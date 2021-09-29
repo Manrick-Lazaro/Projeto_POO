@@ -51,6 +51,7 @@ public class MainClass {
             case 16: EnviarMensagem(); break;
             case 17: Mensagens(); break;
             case 18: Comentarios(); break;
+            case 19: Amigos(); break;
             case 50: Sair(); break;
           }
         }
@@ -92,6 +93,7 @@ public class MainClass {
     Console.WriteLine("16 - Enviar Mensagem");
     Console.WriteLine("17 - Mensagens");
     Console.WriteLine("18 - Comentatios");
+    Console.WriteLine("19 - Amigos");
     Console.WriteLine("50 - Sair");
     Console.WriteLine("0  - Finalizar programa");
     Console.Write("Escolha uma opcao: ");
@@ -190,6 +192,27 @@ public class MainClass {
       Console.WriteLine(p);
   }
 
+  public static void Amigos () {
+    Console.WriteLine("-------------AMIGOS-------------");
+    Console.WriteLine();
+    List<Usuario> pub = new List<Usuario>();    
+    pub = u1.ListarAmigos();
+    foreach (Usuario p in pub)
+      Console.WriteLine(p);
+  }
+
+  public static void AddAmigos () {
+    Console.WriteLine("-------------ADICIONANDO UM AMIGO-------------");
+    Console.Write("Digite uma ID: ");
+    int id = int.Parse(Console.ReadLine());
+
+    Usuario uu = new Usuario ();
+
+    uu = b1.GetUsuario(id);
+  
+    u1.AddAmigo(uu);
+  }
+  
   public static void NovoPost () {
     Console.WriteLine("-------------CRIANDO UMA NOVA PUBLICAÇÃO-------------");
     Console.Write("Digite: ");
@@ -256,13 +279,7 @@ public class MainClass {
     b1.Curtir(x);
   }
 
-  public static void AddAmigos () {
-    Console.WriteLine("-------------ADICIONANDO UM AMIGO-------------");
-    Console.Write("Digite uma ID: ");
-    int id = int.Parse(Console.ReadLine());
-
-    u1.AddAmigo(id);
-  }
+  
 
   public static void ExcluirA () {
     Console.WriteLine("-------------EXCLUINDO AMIGO-------------");
