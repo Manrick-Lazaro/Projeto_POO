@@ -232,7 +232,7 @@ public class MainClass {
     Console.Write("Digite o id da postagem: ");
     int id = int.Parse(Console.ReadLine());
 
-    Publicacao p = b1.Listar(id);
+    Publicacao p = b1.GetPub(id);
     Comentario comentario = new Comentario();
 
     if (p == null) {

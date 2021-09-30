@@ -1,2 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ArrayOfPublicacao xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+<ArrayOfPublicacao xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Publicacao>
+    <ID>1</ID>
+    <IDUsuario>1</IDUsuario>
+    <UsuarioEmail>a</UsuarioEmail>
+    <Postagem>pub 1</Postagem>
+    <GetComentarios />
+    <Curtidas>
+      <Curtida>
+        <Mail>z</Mail>
+      </Curtida>
+    </Curtidas>
+  </Publicacao>
+</ArrayOfPublicacao>

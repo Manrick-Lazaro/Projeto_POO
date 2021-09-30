@@ -57,13 +57,6 @@ class Banco {
     if (p != null) { bancoPublicacoes.Remove(p); }
   }
 
-  public Publicacao Listar (int ID) {
-    for (int i = 0; i < bancoPublicacoes.Count; i++)
-      if (bancoPublicacoes[i].ID == ID) 
-        return bancoPublicacoes[i];
-    return null;
-  }
-
   public void AtualizarPublicacao (Publicacao p) {
     for (int i = 0; i < bancoPublicacoes.Count; i++){
       if (p.ID == bancoPublicacoes[i].ID) {
@@ -76,7 +69,7 @@ class Banco {
   public void Curtir (int id, string email) {
     Curtida c = new Curtida();
     
-    Publicacao p = Listar(id); 
+    Publicacao p = GetPub(id); 
     c.Mail = email;
     
     List<Curtida> curt = p.Curtidas;
@@ -95,7 +88,7 @@ class Banco {
   }
 
   public void RetirarLike (int id, string email) {
-    Publicacao p = Listar(id); 
+    Publicacao p = GetPub(id); 
 
     List<Curtida> curt = p.Curtidas;
     Curtida c;
@@ -120,7 +113,7 @@ class Banco {
   }
 
   public void ExcluirComentario (int id, string email, int idComent) {
-    Publicacao p = Listar(id); 
+    Publicacao p = GetPub(id); 
 
     List<Comentario> coment = p.GetComentarios;
     

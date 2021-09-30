@@ -6,7 +6,6 @@ public class Publicacao {
   private List<Curtida> curtidas = new List<Curtida>();
   private int id;
   private int idUsuario;
-  private int x;
   private string usuarioEmail;
 
   public int ID { 

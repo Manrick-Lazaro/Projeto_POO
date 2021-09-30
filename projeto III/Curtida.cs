@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 
 public class Curtida{
-  private string emails;
+  private string email;
 
   public string Mail {
-    get { return emails; }
-    set { emails = value; }
+    get { return email; }
+    set { email = value; }
   } 
 }
